@@ -1,0 +1,41 @@
+$g-input-password-default-skin: 'basic' !default;
+$g-input-password-skins: (test:()) !default;
+
+@mixin register-input-password-skin($skin-name, $new-skin-map){
+	$map: ($skin-name: $new-skin-map);
+	$g-input-password-skins : map-merge($map, $g-input-password-skins) !global;
+}
+
+@mixin input-password-skin($skin){
+	$skin-map: map-get($g-input-password-skins, $skin);
+	$normal-state: map-get($skin-map, 'normal');
+	$focus-state: map-get($skin-map, 'focus');
+
+	@if $normal-state{
+		@each $property, $value in $normal-state {
+			#{$property}: $value;
+		}		
+	}
+
+	@if $focus-state {		
+		@each $property, $value in $focus-state {
+			&:focus{
+				#{$property} : $value;
+			}
+		}		
+	}
+}
+
+$g-input-password-basic-skin: (
+	'normal': (
+		background-color: #fff,
+		border-color: #dedede,
+		color: #aaa,
+		font-family: inherit
+	),
+
+	'focus': (
+		border-color: #aaa
+	)
+) !default;
+@include register-input-password-skin(basic, $g-input-password-basic-skin);

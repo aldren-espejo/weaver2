@@ -1,0 +1,16 @@
+@import "sizes";
+@import "skins";
+
+@mixin select($size: $g-select-default-size, $skin: $g-select-default-skin){
+	@include select-size($size);
+	@include select-skin($skin);
+}
+
+select{
+	display: inline-block;
+	border: 1px solid transparent;
+	line-height: normal;
+	width: 100%;
+	
+	@include select;
+}

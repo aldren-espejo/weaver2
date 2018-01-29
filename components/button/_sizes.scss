@@ -1,0 +1,26 @@
+$g-button-default-size: 'normal' !default;
+
+@mixin button-size($size){
+	$sizes: map-get($g-button-sizes, $size);
+	
+	@each $property, $value in $sizes {
+		#{$property} : $value;
+	}
+}
+
+$g-button-sizes: (
+	'small': (
+		padding: rem(5px 10px),
+		font-size: rem(12px)
+	),
+
+	'normal': (
+		padding: rem(9px 15px),
+		font-size: rem(14px)
+	),
+
+	'large': (
+		padding: rem(16px 22px),
+		font-size: rem(16px)
+	)
+) !default;

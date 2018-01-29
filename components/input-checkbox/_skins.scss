@@ -1,0 +1,16 @@
+$g-input-checkbox-default-skin: 'basic' !default;
+
+@mixin input-checkbox-skin($skin){
+	$skins: map-get($g-input-checkbox-skins, $skin);
+	
+	@each $property, $value in $skins {
+		#{$property} : $value;
+	}
+}
+
+$g-input-checkbox-skins: (
+	'basic': (
+		color: #888,
+		text-align: left
+	)
+) !default;

@@ -1,0 +1,15 @@
+$g-screen-sizes : (
+	'in-small-screen' : 0px,
+	'in-medium-screen' : 640px,
+	'in-large-screen'	: 1024px,
+	'in-xlarge-screen' : 1200px
+) !default;
+
+
+@mixin respond($name){
+	$screen-size : map-get($g-screen-sizes, $name);
+
+	@media only screen and (min-width: #{rem($screen-size)}) {
+		@content;
+	}
+}

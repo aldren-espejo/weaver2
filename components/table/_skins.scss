@@ -1,0 +1,60 @@
+$g-table-default-skin: 'basic' !default;
+$g-table-skins: (test:()) !default;
+
+@mixin register-table-skin($skin-name, $new-skin-map){
+	$map: ($skin-name: $new-skin-map);
+	$g-table-skins : map-merge($map, $g-table-skins) !global;
+}
+
+@mixin table-skin($skin){
+	$skin-map: map-get($g-table-skins, $skin);
+	
+	@each $element, $declarations in $skin-map {
+		#{$element} {
+			@each $property, $value in $declarations {
+				#{$property} : $value;
+			}
+		}
+	}
+}
+
+$g-table-basic-skin: (
+	table: (
+		font-size: rem(15px),
+		border: 1px solid #eee,
+	),
+
+	th: (
+		background: #F9FAFB,
+		border-bottom: 1px solid #eee,
+		color: #444,
+		text-align: left
+	),
+
+	td: (
+		background: #fff,
+		border-bottom: 1px solid #eee,
+		color: #888,
+	)
+) !default;
+@include register-table-skin(basic, $g-table-basic-skin);
+
+
+$g-table-minimal-skin: (
+	table: (
+		font-size: rem(15px),
+	),
+
+	th: (
+		border-bottom: 1px solid #eee,
+		color: #444,
+		text-align: left
+	),
+
+	td: (
+		background: #fff,
+		border-bottom: 1px solid #eee,
+		color: #888,
+	)
+) !default;
+@include register-table-skin(minimal, $g-table-minimal-skin);

@@ -1,0 +1,15 @@
+@import "sizes";
+@import "skins";
+
+@mixin table($size: $g-table-default-size, $skin: $g-table-default-skin){
+	@include table-size($size);
+	@include table-skin($skin);
+}
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@include table;

@@ -1,0 +1,21 @@
+$g-label-default-size: 'normal' !default;
+
+@mixin label-size($size){
+	$sizes: map-get($g-label-sizes, $size);
+	
+	@each $property, $value in $sizes {
+		#{$property} : $value;
+	}
+}
+
+$g-label-sizes: (
+	'small': (
+		margin: 0 0 rem(5px),
+		font-size: rem(12px)
+	),
+
+	'normal': (
+		margin: 0 0 rem(8px),
+		font-size: rem(14px)
+	)
+) !default;

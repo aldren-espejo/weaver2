@@ -1,0 +1,21 @@
+$g-label-default-skin: 'basic' !default;
+$g-label-skins: (test:()) !default;
+
+@mixin register-label-skin($skin-name, $new-skin-map){
+	$map: ($skin-name: $new-skin-map);
+	$g-label-skins : map-merge($map, $g-label-skins) !global;
+}
+
+@mixin label-skin($skin){
+	$skin-map: map-get($g-label-skins, $skin);
+	
+	@each $property, $value in $skin-map {
+		#{$property}: $value;
+	}		
+}
+
+$g-label-basic-skin: (
+	font-weight: bold,
+	color: red
+) !default;
+@include register-label-skin('basic', $g-label-basic-skin);

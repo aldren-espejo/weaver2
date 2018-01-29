@@ -1,0 +1,22 @@
+$g-type-sizes: (
+	'in-small-screen': (
+		h1: (
+			font-size: rem(36px),
+			margin: rem(0 0 20px)
+		),
+
+		h2: (
+			font-size: rem(18px),
+			margin: rem(0 0 20px)
+		),
+
+		p: (
+			margin: rem(0 0 30px),
+			line-height: rem(24px)
+		),
+
+		li: (
+			line-height: rem(26px)
+		)
+	)
+) !default;

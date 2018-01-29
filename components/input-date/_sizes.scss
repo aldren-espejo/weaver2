@@ -1,0 +1,21 @@
+$g-input-date-default-size: 'normal' !default;
+
+@mixin input-date-size($size){
+	$sizes: map-get($g-input-date-sizes, $size);
+	
+	@each $property, $value in $sizes {
+		#{$property} : $value;
+	}
+}
+
+$g-input-date-sizes: (
+	'small': (
+		padding: rem(5px 10px),
+		font-size: rem(12px)
+	),
+
+	'normal': (
+		padding: rem(9px 15px),
+		font-size: rem(14px)
+	)
+) !default;

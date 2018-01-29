@@ -1,0 +1,22 @@
+@import "sizes";
+@import "skins";
+
+@each $screen-size, $elements in $g-type-sizes {
+	@include respond($screen-size) {
+		@each $el, $declarations in $elements {
+			#{$el} {
+				@each $property, $val in $declarations{
+					#{$property}: $val;
+				}
+			}
+		}
+	}
+}
+
+@each $el, $declarations in $g-type-skins {
+	#{$el} {
+		@each $property, $val in $declarations{
+			#{$property}: $val;
+		}
+	}
+}

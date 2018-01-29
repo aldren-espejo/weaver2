@@ -1,0 +1,15 @@
+@import "sizes";
+@import "skins";
+
+@mixin button($size: $g-button-default-size, $skin: $g-button-default-skin){
+	@include button-size($size);
+	@include button-skin($skin);
+}
+
+button, a[class*="btn-"]{
+	display: inline-block;
+	text-align: center;
+	line-height: normal;
+	
+	@include button;
+}

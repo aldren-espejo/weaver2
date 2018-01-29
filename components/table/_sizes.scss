@@ -1,0 +1,35 @@
+$g-table-default-size: 'normal' !default;
+
+@mixin table-size($size){
+	$sizes: map-get($g-table-sizes, $size);
+	
+	@each $element, $declarations in $sizes {
+		#{$element} {
+			@each $property, $value in $declarations {
+				#{$property} : $value;
+			}
+		}
+	}
+}
+
+$g-table-sizes: (
+	'small' : (
+		th: (
+			padding: rem(5px)
+		),
+
+		td: (
+			paddingL rem(5px)
+		)
+	),
+
+	'normal' : (
+		th: (
+			padding: rem(15px 10px)
+		),
+
+		td: (
+			padding: rem(10px)
+		)
+	)
+) !default;

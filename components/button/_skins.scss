@@ -1,0 +1,74 @@
+$g-button-default-skin: 'basic' !default;
+$g-button-skins: (test:()) !default;
+
+@mixin register-button-skin($skin-name, $new-skin-map){
+	$map: ($skin-name: $new-skin-map);
+	$g-button-skins : map-merge($map, $g-button-skins) !global;
+}
+
+@mixin button-skin($skin){
+	$skin-map: map-get($g-button-skins, $skin);
+	$normal-state: map-get($skin-map, 'normal');
+	$hover-state: map-get($skin-map, 'hover');
+	$disabled-state: map-get($skin-map, 'disabled');
+	
+	@if $normal-state{
+		@each $property, $value in $normal-state {
+			#{$property}: $value;
+		}		
+	}
+
+	@if $hover-state {		
+		@each $property, $value in $hover-state {
+			&:hover{
+				#{$property} : $value;
+			}
+		}		
+	}
+
+	@if $disabled-state {
+		@each $property, $value in $disabled-state {
+			&:disabled{
+				#{$property} : $value;
+			}
+		}		
+	}
+}
+
+$g-button-basic-skin: (
+	'normal': (
+		background-color: #444,
+		border: none,
+		color: #fff
+	),
+
+	'hover': (
+		background-color: #222
+	),
+
+	'disabled': (
+		background-color: #ababab,
+		cursor: not-allowed
+	)
+) !default;
+@include register-button-skin('basic', $g-button-basic-skin);
+
+
+$g-button-minimal-skin: (
+	'normal': (
+		background-color: transparent,
+		border: 1px solid #dedede,
+		color: #444
+	),
+
+	'hover': (
+		background-color: #f4f4f4
+	),
+
+	'disabled': (
+		background-color: transparent,
+		border: 1px solid #dedede,
+		cursor: not-allowed
+	)
+) !default;
+@include register-button-skin('minimal', $g-button-minimal-skin);

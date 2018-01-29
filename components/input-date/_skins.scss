@@ -1,0 +1,41 @@
+$g-input-date-default-skin: 'basic' !default;
+$g-input-date-skins: (test:()) !default;
+
+@mixin register-input-date-skin($skin-name, $new-skin-map){
+	$map: ($skin-name: $new-skin-map);
+	$g-input-date-skins : map-merge($map, $g-input-date-skins) !global;
+}
+
+@mixin input-date-skin($skin){
+	$skin-map: map-get($g-input-date-skins, $skin);
+	$normal-state: map-get($skin-map, 'normal');
+	$focus-state: map-get($skin-map, 'focus');
+
+	@if $normal-state{
+		@each $property, $value in $normal-state {
+			#{$property}: $value;
+		}		
+	}
+
+	@if $focus-state {		
+		@each $property, $value in $focus-state {
+			&:focus{
+				#{$property} : $value;
+			}
+		}		
+	}
+}
+
+$g-input-date-basic-skin: (
+	'normal': (
+		background-color: #fff,
+		border-color: #dedede,
+		color: #aaa,
+		font-family: inherit
+	),
+
+	'focus': (
+		border-color: #aaa
+	)
+) !default;
+@include register-input-date-skin(basic, $g-input-date-basic-skin);

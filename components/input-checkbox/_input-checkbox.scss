@@ -1,0 +1,17 @@
+@import "sizes";
+@import "skins";
+
+@mixin input-checkbox($size: $g-input-checkbox-default-size, $skin: $g-input-checkbox-default-skin){
+	@include input-checkbox-size($size);
+	@include input-checkbox-skin($skin);
+}
+
+.checkbox{
+	@include input-checkbox;
+	cursor: pointer;
+}
+
+input[type="checkbox"]{
+	vertical-align: middle;
+	margin: 0 rem(3px) 0 0;
+}

@@ -1,0 +1,41 @@
+$g-input-email-default-skin: 'basic' !default;
+$g-input-email-skins: (test:()) !default;
+
+@mixin register-input-email-skin($skin-name, $new-skin-map){
+	$map: ($skin-name: $new-skin-map);
+	$g-input-email-skins : map-merge($map, $g-input-email-skins) !global;
+}
+
+@mixin input-email-skin($skin){
+	$skin-map: map-get($g-input-email-skins, $skin);
+	$normal-state: map-get($skin-map, 'normal');
+	$focus-state: map-get($skin-map, 'focus');
+
+	@if $normal-state{
+		@each $property, $value in $normal-state {
+			#{$property}: $value;
+		}		
+	}
+
+	@if $focus-state {		
+		@each $property, $value in $focus-state {
+			&:focus{
+				#{$property} : $value;
+			}
+		}		
+	}
+}
+
+$g-input-email-basic-skin: (
+	'normal': (
+		background-color: #fff,
+		border-color: #dedede,
+		color: #aaa,
+		font-family: inherit
+	),
+
+	'focus': (
+		border-color: #aaa
+	)
+) !default;
+@include register-input-email-skin(basic, $g-input-email-basic-skin);

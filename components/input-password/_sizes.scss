@@ -1,0 +1,21 @@
+$g-input-password-default-size: 'normal' !default;
+
+@mixin input-password-size($size){
+	$sizes: map-get($g-input-password-sizes, $size);
+	
+	@each $property, $value in $sizes {
+		#{$property} : $value;
+	}
+}
+
+$g-input-password-sizes: (
+	'small': (
+		padding: rem(5px 10px),
+		font-size: rem(12px)
+	),
+
+	'normal': (
+		padding: rem(9px 15px),
+		font-size: rem(14px)
+	)
+) !default;

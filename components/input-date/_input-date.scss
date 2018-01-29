@@ -1,0 +1,16 @@
+@import "sizes";
+@import "skins";
+
+@mixin input-date($size: $g-input-date-default-size, $skin: $g-input-date-default-skin){
+	@include input-date-size($size);
+	@include input-date-skin($skin);
+}
+
+input[type="date"]{
+	display: inline-block;
+	border: 1px solid transparent;
+	line-height: normal;
+	width: 100%;
+	
+	@include input-date;
+}

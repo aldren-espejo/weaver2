@@ -1,0 +1,14 @@
+@import "sizes";
+@import "skins";
+
+@mixin label($size: $g-label-default-size, $skin: $g-label-default-skin){
+	@include label-size($size);
+	@include label-skin($skin);
+}
+
+label{
+	display: block;
+	line-height: normal;
+	
+	@include label;
+}

@@ -1,0 +1,21 @@
+$g-input-email-default-size: 'normal' !default;
+
+@mixin input-email-size($size){
+	$sizes: map-get($g-input-email-sizes, $size);
+	
+	@each $property, $value in $sizes {
+		#{$property} : $value;
+	}
+}
+
+$g-input-email-sizes: (
+	'small': (
+		padding: rem(5px 10px),
+		font-size: rem(12px)
+	),
+
+	'normal': (
+		padding: rem(9px 15px),
+		font-size: rem(14px)
+	)
+) !default;

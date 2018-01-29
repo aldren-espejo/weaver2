@@ -1,0 +1,19 @@
+$g-input-checkbox-default-size: 'normal' !default;
+
+@mixin input-checkbox-size($size){
+	$sizes: map-get($g-input-checkbox-sizes, $size);
+	
+	@each $property, $value in $sizes {
+		#{$property} : $value;
+	}
+}
+
+$g-input-checkbox-sizes: (
+	'small': (
+		font-size: rem(12px)
+	),
+
+	'normal': (
+		font-size: rem(14px)
+	)
+) !default;

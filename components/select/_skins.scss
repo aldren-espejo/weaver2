@@ -1,0 +1,41 @@
+$g-select-default-skin: 'basic' !default;
+$g-select-skins: (test:()) !default;
+
+@mixin register-select-skin($skin-name, $new-skin-map){
+	$map: ($skin-name: $new-skin-map);
+	$g-select-skins : map-merge($map, $g-select-skins) !global;
+}
+
+@mixin select-skin($skin){
+	$skin-map: map-get($g-select-skins, $skin);
+	$normal-state: map-get($skin-map, 'normal');
+	$focus-state: map-get($skin-map, 'focus');
+
+	@if $normal-state{
+		@each $property, $value in $normal-state {
+			#{$property}: $value;
+		}		
+	}
+
+	@if $focus-state {		
+		@each $property, $value in $focus-state {
+			&:focus{
+				#{$property} : $value;
+			}
+		}		
+	}
+}
+
+$g-select-basic-skin: (
+	'normal': (
+		background-color: #fff,
+		border-color: #dedede,
+		color: #aaa,
+		font-family: inherit
+	),
+
+	'focus': (
+		border-color: #aaa
+	)
+) !default;
+@include register-select-skin(basic, $g-select-basic-skin);
